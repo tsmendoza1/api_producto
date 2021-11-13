@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody
 @Service
 class ClienteService {
     @Autowired
-    lateinit var ClienteRepository: ClienteRepository
+    lateinit var ClienteRepository: ClienteRepository 
 
     fun list(): List<Cliente> {
         return ClienteRepository.findAll()
