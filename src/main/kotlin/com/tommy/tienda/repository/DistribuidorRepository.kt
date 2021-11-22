@@ -1,8 +1,8 @@
 package com.tommy.tienda.repository
 
-import com.tommy.tienda.model.servicio
+import com.tommy.tienda.model.distribuidor
 import org.springframework.data.jpa.repository.JpaRepository
 
-interface ProductoRepository: JpaRepository <servicio, Long> {
+interface DistribuidorRepository: JpaRepository<distribuidor, Long> {
     //interface WorkoutRepository:JpaRepository<Producto, Long> {}
 }

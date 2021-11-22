@@ -3,14 +3,14 @@ package com.tommy.tienda.model
 import javax.persistence.*
 
 @Entity
-@Table(name = "producto")
-class Producto {
+@Table(name = "distribuidor")
+class distribuidor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(updatable = false)
     var id: Long? = null
 
-    var description: String? = null
+    var nombre: String? = null
 
-    var details: String? = null
+    var descripcion: String? = null
 }
