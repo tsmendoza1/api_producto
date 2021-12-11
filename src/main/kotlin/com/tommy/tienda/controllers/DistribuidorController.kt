@@ -1,7 +1,6 @@
 package com.tommy.tienda.controllers
 
-import com.tommy.tienda.model.Cliente
-import com.tommy.tienda.model.distribuidor
+import com.tommy.tienda.model.Distribuidor
 import com.tommy.tienda.service.DistribuidorService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
@@ -10,22 +9,22 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/distribuidor")
 @CrossOrigin(methods = [RequestMethod.GET, RequestMethod.POST, RequestMethod.PATCH, RequestMethod.PUT])
 
-class DsittribuidorController {
+class DistribuidorController {
     @Autowired
     lateinit var DistribuidorService: DistribuidorService
 
     @GetMapping
-    fun list(): List<distribuidor>{
+    fun list(): List<Distribuidor>{
         return DistribuidorService.list()
     }
 
     @GetMapping
-    fun save(@RequestBody distribuidor: distribuidor): distribuidor {
+    fun save(@RequestBody distribuidor: Distribuidor): Distribuidor {
         return DistribuidorService.save(distribuidor)
     }
 
     @PostMapping
-    fun update (@RequestBody distribuidor: distribuidor): distribuidor {
+    fun update (@RequestBody distribuidor: Distribuidor): Distribuidor {
         return DistribuidorService.update(distribuidor)
     }
 
