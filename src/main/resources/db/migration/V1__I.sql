@@ -18,7 +18,9 @@ CREATE TABLE IF NOT EXISTS cliente (
     id serial,
     Nombre VARCHAR(45) NOT NULL,
     Fecha VARCHAR(45) NULL,
-    PRIMARY KEY (id)
+    distribuidor_id int,
+    FOREIGN key (distribuidor_id)
+    REFERENCES distribuidor(id)
     );
 
 
