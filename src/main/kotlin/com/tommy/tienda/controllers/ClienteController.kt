@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.*
         @Autowired
         lateinit var ClienteService: ClienteService
 
-       // @GetMapping
-       // fun list(): List<Cliente>{
+        //@GetMapping
+        //fun list(): List<Cliente>{
          //   return ClienteService.list()
-        //}
+       // }
 
         @GetMapping
         fun save(@RequestBody cliente: Cliente): Cliente {

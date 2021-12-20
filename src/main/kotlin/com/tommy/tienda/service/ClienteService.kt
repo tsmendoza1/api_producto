@@ -19,11 +19,15 @@ class ClienteService {
     fun update (cliente: Cliente):Cliente {
         //validacion nombre vacio
         try {
+            cliente.Nombre?.trim()?.isEmpty()
+                    ?: throw java.lang.Exception("El nombre no puede estar vacio")
+
             if (cliente.Nombre.equals("")) {
                 throw Exception()
             } else {
                 return ClienteRepository.save(cliente)
             }
+
         }catch (ex: Exception) {
             throw ResponseStatusException(
                     HttpStatus.NOT_ACCEPTABLE, "No se aceptan nombres vacios", ex)
@@ -41,5 +45,12 @@ class ClienteService {
 
         }
         return ClienteRepository.save(cliente)
+    }
+
+    fun verifyWord(description: String?):Boolean{
+        if (description?.length!!<3){
+            return false
+        }
+        return true
     }
 }
