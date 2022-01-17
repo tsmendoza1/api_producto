@@ -34,6 +34,8 @@ class ClienteService {
         }
     }
 
+
+
     fun delete (id:Long): Boolean {
         ClienteRepository.deleteById(id)
         return true
