@@ -3,7 +3,7 @@ package com.tommy.tienda.controllers
 import com.tommy.tienda.dto.AuthenticationRequest
 import com.tommy.tienda.dto.AuthenticationResponse
 import com.tommy.tienda.security.JWTUtil
-import com.tommy.tienda.service.AppUserDetailsService
+import com.tommy.tienda.service.AppUsersService.AppUserDetailsService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity

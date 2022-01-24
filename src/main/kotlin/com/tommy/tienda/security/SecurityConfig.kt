@@ -1,7 +1,7 @@
 package com.tommy.tienda.security
 
 import com.tommy.tienda.security.filter.JwtFilterRequest
-import com.tommy.tienda.service.AppUserDetailsService
+import com.tommy.tienda.service.AppUsersService.AppUserDetailsService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.security.authentication.AuthenticationManager

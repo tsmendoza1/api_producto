@@ -1,4 +1,4 @@
-package com.tommy.tienda.service
+package com.tommy.tienda.service.UsersService
 
 import com.tommy.tienda.model.Users
 import com.tommy.tienda.repository.UsersRepository
@@ -46,7 +46,7 @@ class UsersService {
             var digito_region = cedula.substring(0,2);
 
             //Pregunto si la region existe ecuador se divide en 24 regiones
-            if( digito_region >= 1 && digito_region <=24 ){
+            if( digito_region >= "1" && digito_region <="24" ){
 
                 // Extraigo el ultimo digito
                 var ultimo_digito   = cedula.substring(9,10);
@@ -56,7 +56,7 @@ class UsersService {
 
                 //Agrupo los impares, los multiplico por un factor de 2, si la resultante es > que 9 le resta el 9 a la resultante
                 var numero1a = cedula.substring(0,1);
-                var numero1 = (numero1a * 2);
+                var numero1 = (numero1a*2);
                 if( numero1 > 9 ){ var numero1 = (numero1 - 9); }
 
                 var numero3a = cedula.substring(2,3);
@@ -95,20 +95,21 @@ class UsersService {
 
                 //Validar que el digito validador sea igual al de la cedula
                 if(digito_validador == ultimo_digito){
-                    console.log('la cedula:' + cedula + ' es correcta');
+                    println("la cedula:" + cedula + " es correcta");
                 }else{
-                    console.log('la cedula:' + cedula + ' es incorrecta');
+                    println("la cedula:" + cedula + "es incorrecta")
                 }
 
             }else{
 
-                console.log('Esta cedula no pertenece a ninguna region');
+                println("Esta cedula no pertenece a ninguna region");
             }
         }else{
 
-            console.log('Esta cedula tiene menos de 10 Digitos');
+            println("Esta cedula tiene menos de 10 Digitos");
         }
 
     }
+
 } //service
-c
+

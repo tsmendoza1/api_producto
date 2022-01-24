@@ -1,7 +1,7 @@
 package com.tommy.tienda.security.filter
 
 import com.tommy.tienda.security.JWTUtil
-import com.tommy.tienda.service.AppUserDetailsService
+import com.tommy.tienda.service.AppUsersService.AppUserDetailsService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.context.SecurityContextHolder

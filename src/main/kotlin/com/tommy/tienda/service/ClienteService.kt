@@ -43,6 +43,8 @@ class ClienteService {
 
     fun save (cliente:Cliente):Cliente {
         //validacion cliente vacio
+      //  Cliente.Nombre?.takeIf { it.trim().isNotEmpty() }
+        //        ?: throw Exception("Descripción no debe ser vacio")
         if (cliente.Nombre.equals("")){
 
         }
