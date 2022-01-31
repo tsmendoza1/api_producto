@@ -18,12 +18,12 @@ class DistribuidorController {
         return distribuidorService.list()
     }
 
-    @GetMapping
+    @PostMapping
     fun save(@RequestBody distribuidor: Distribuidor): Distribuidor {
         return distribuidorService.save(distribuidor)
     }
 
-    @PostMapping
+    @PatchMapping
     fun update (@RequestBody distribuidor: Distribuidor): Distribuidor {
         return distribuidorService.update(distribuidor)
     }

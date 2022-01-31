@@ -18,7 +18,7 @@ class ProductoController {
         return productoService.list()
     }
 
-    @PostMapping
+    @PatchMapping
     fun update (@RequestBody servicio: Servicio): Servicio {
         return productoService.update(servicio)
     }
@@ -28,7 +28,7 @@ class ProductoController {
         return productoService.delete(id)
     }
 
-    @GetMapping
+    @PostMapping
     fun save(@RequestBody servicio: Servicio): Servicio {
         return productoService.save(servicio)
     }

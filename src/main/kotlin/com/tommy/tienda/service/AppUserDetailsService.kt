@@ -14,7 +14,7 @@ class AppUserDetailsService: UserDetailsService {
     lateinit var usersService: UsersService
 
     override fun loadUserByUsername(username: String?): UserDetails {
-        val response = usersService.getUser(username)
+        val response= usersService.getUser(username)
         return User(response?.username,"{noop}admin"+response?.password, ArrayList())
     }
 }
