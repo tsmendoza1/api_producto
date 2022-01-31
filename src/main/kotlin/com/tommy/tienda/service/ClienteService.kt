@@ -21,6 +21,9 @@ class ClienteService {
     }
 
     fun update(cliente: Cliente): Cliente {
+        if (verifyDescription("libre")) {
+            return clienteRepository.save(cliente)
+        }
         return clienteRepository.save(cliente)
     }
 
@@ -56,5 +59,16 @@ class ClienteService {
             return false
         }
         return true
+    }
+
+    fun verifyDescription(description: String?):Boolean{
+        fun verifyDescription(description: String?):Boolean{
+
+            for (i in 0..String().length){
+                val lista= listOf<String>("ocupado","libre")
+            }
+            return true
+        }
+        return false
     }
 }

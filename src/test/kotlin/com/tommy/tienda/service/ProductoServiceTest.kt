@@ -39,7 +39,7 @@ class ProductoServiceTest {
     }
 
     @Test
-    fun updateIsCorrect(){
+    fun updateIsCorrect() {
         Mockito.`when`(productoRepository.save(Mockito.any(Servicio::class.java))).thenReturn(returnObject)
         val response = productoService.update(newObject)
         Assertions.assertEquals(response.id, newObject.id)
