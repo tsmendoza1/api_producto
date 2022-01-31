@@ -11,26 +11,26 @@ import org.springframework.web.bind.annotation.*
 
 class DistribuidorController {
     @Autowired
-    lateinit var DistribuidorService: DistribuidorService
+    lateinit var distribuidorService: DistribuidorService
 
     @GetMapping
     fun list(): List<Distribuidor>{
-        return DistribuidorService.list()
+        return distribuidorService.list()
     }
 
     @GetMapping
     fun save(@RequestBody distribuidor: Distribuidor): Distribuidor {
-        return DistribuidorService.save(distribuidor)
+        return distribuidorService.save(distribuidor)
     }
 
     @PostMapping
     fun update (@RequestBody distribuidor: Distribuidor): Distribuidor {
-        return DistribuidorService.update(distribuidor)
+        return distribuidorService.update(distribuidor)
     }
 
     @DeleteMapping("/delete/{id}")
     fun delete (@PathVariable("id") id:Long ):Boolean {
-        return DistribuidorService.delete(id)
+        return distribuidorService.delete(id)
     }
 
 }

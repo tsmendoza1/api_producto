@@ -10,12 +10,16 @@ import org.springframework.web.server.ResponseStatusException
 @Service
 class ProductoService {
     @Autowired
-    lateinit var ProductoRepository: ProductoRepository
+    lateinit var productoRepository: ProductoRepository
 
 
     fun list(): List<Servicio> {
 
-        return ProductoRepository.findAll()
+        return productoRepository.findAll()
+    }
+
+    fun save (servicio:Servicio): Servicio {
+        return productoRepository.save(servicio)
     }
 
     fun update (servicio: Servicio): Servicio {
@@ -24,7 +28,7 @@ class ProductoService {
             if (servicio.descripcion.equals("")) {
                 throw Exception()
             } else {
-                return ProductoRepository.save(servicio)
+                return productoRepository.save(servicio)
             }
         } catch (ex: Exception) {
             throw ResponseStatusException(
@@ -32,11 +36,9 @@ class ProductoService {
         }
     }
     fun delete (id:Long): Boolean {
-        ProductoRepository.deleteById(id)
+        productoRepository.deleteById(id)
         return true
     }
 
-    fun save (servicio:Servicio): Servicio {
-        return ProductoRepository.save(servicio)
-    }
+
 }

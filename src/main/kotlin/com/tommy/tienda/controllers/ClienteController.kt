@@ -11,25 +11,25 @@ import org.springframework.web.bind.annotation.*
 
     class ClienteController {
         @Autowired
-        lateinit var ClienteService: ClienteService
+        lateinit var clienteService: ClienteService
 
-        //@GetMapping
-        //fun list(): List<Cliente>{
-         //   return ClienteService.list()
-       // }
+        @GetMapping
+        fun list(): List<Cliente>{
+            return clienteService.list()
+        }
 
         @GetMapping
         fun save(@RequestBody cliente: Cliente): Cliente {
-            return ClienteService.save(cliente)
+            return clienteService.save(cliente)
         }
 
         @PostMapping
         fun update (@RequestBody cliente:Cliente): Cliente {
-            return ClienteService.update(cliente)
+            return clienteService.update(cliente)
         }
 
        @DeleteMapping("/delete/{id}")
         fun delete (@PathVariable("id") id:Long ):Boolean {
-            return ClienteService.delete(id)
+            return clienteService.delete(id)
         }
   }

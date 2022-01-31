@@ -3,7 +3,7 @@ package com.tommy.tienda.controllers
 import com.tommy.tienda.dto.AuthenticationRequest
 import com.tommy.tienda.dto.AuthenticationResponse
 import com.tommy.tienda.security.JWTUtil
-import com.tommy.tienda.service.AppUsersService.AppUserDetailsService
+import com.tommy.tienda.service.AppUserDetailsService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -23,7 +23,7 @@ class LoginController {
     lateinit var authenticationManager : AuthenticationManager
 
     @Autowired
-    lateinit var AppUserDetailsService: AppUserDetailsService
+    lateinit var appUserDetailsService: AppUserDetailsService
 
     @Autowired
     lateinit var jwtUtil: JWTUtil
@@ -33,7 +33,7 @@ class LoginController {
     fun createToken(@RequestBody request: AuthenticationRequest): ResponseEntity<AuthenticationResponse> {
         try {
             authenticationManager.authenticate(UsernamePasswordAuthenticationToken(request.username, request.password))
-            val userDetails: UserDetails = AppUserDetailsService.loadUserByUsername(request.username)
+            val userDetails: UserDetails = appUserDetailsService.loadUserByUsername(request.username)
             val jwt: String = jwtUtil.generateToken(userDetails)
             return ResponseEntity(AuthenticationResponse(jwt), HttpStatus.OK)
         }

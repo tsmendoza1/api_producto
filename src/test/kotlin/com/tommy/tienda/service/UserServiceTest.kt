@@ -1,6 +1,5 @@
 package com.tommy.tienda.service
 
-import com.tommy.tienda.service.UsersService.UsersService
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest

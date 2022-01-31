@@ -10,13 +10,21 @@ import org.springframework.web.server.ResponseStatusException
 @Service
 class ClienteService {
     @Autowired
-    lateinit var ClienteRepository: ClienteRepository 
+    lateinit var clienteRepository: ClienteRepository
 
     fun list(): List<Cliente> {
-        return ClienteRepository.findAll()
+        return clienteRepository.findAll()
     }
 
-    fun update (cliente: Cliente):Cliente {
+    fun save (cliente:Cliente):Cliente {
+        return clienteRepository.save(cliente)
+    }
+
+    fun update(cliente: Cliente): Cliente {
+        return clienteRepository.save(cliente)
+    }
+
+    fun updateNombre (cliente: Cliente):Cliente {
         //validacion nombre vacio
         try {
             cliente.Nombre?.trim()?.isEmpty()
@@ -25,7 +33,7 @@ class ClienteService {
             if (cliente.Nombre.equals("")) {
                 throw Exception()
             } else {
-                return ClienteRepository.save(cliente)
+                return clienteRepository.save(cliente)
             }
 
         }catch (ex: Exception) {
@@ -37,19 +45,11 @@ class ClienteService {
 
 
     fun delete (id:Long): Boolean {
-        ClienteRepository.deleteById(id)
+        clienteRepository.deleteById(id)
         return true
     }
 
-    fun save (cliente:Cliente):Cliente {
-        //validacion cliente vacio
-      //  Cliente.Nombre?.takeIf { it.trim().isNotEmpty() }
-        //        ?: throw Exception("Descripción no debe ser vacio")
-        if (cliente.Nombre.equals("")){
 
-        }
-        return ClienteRepository.save(cliente)
-    }
 
     fun verifyWord(description: String?):Boolean{
         if (description?.length!!<3){

@@ -1,7 +1,7 @@
 package com.tommy.tienda.security
 
 import com.tommy.tienda.security.filter.JwtFilterRequest
-import com.tommy.tienda.service.AppUsersService.AppUserDetailsService
+import com.tommy.tienda.service.AppUserDetailsService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.security.authentication.AuthenticationManager
@@ -16,13 +16,13 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 class SecurityConfig: WebSecurityConfigurerAdapter() {
     @Autowired
-    lateinit var AppUserDetailsService: AppUserDetailsService
+    lateinit var appUserDetailsService: AppUserDetailsService
 
     @Autowired
     lateinit var jwtFilterRequest: JwtFilterRequest
 
     override fun configure(auth: AuthenticationManagerBuilder?) {
-        auth?.userDetailsService(AppUserDetailsService)
+        auth?.userDetailsService(appUserDetailsService)
     }
 
     override fun configure(http: HttpSecurity) {

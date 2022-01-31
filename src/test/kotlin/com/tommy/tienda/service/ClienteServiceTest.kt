@@ -1,5 +1,6 @@
 package com.tommy.tienda.service
 
+import com.google.gson.Gson
 import com.tommy.tienda.model.Cliente
 import com.tommy.tienda.repository.ClienteRepository
 import org.junit.jupiter.api.Assertions
@@ -8,6 +9,7 @@ import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.springframework.boot.test.context.SpringBootTest
+import java.io.File
 
 @SpringBootTest
 
@@ -19,31 +21,23 @@ class ClienteServiceTest {
     @Mock
     lateinit var clienteRepository: ClienteRepository
 
-
-
-    val returnObject: Cliente = Cliente().apply {
-        id= 1
-        Nombre="Sana"
-    }
-    val newObject: Cliente = Cliente().apply {
-        id= 1
-        Nombre="Sana"
-    }
+    val jsonString = File("./src/test/resources/Cliente/CrearCliente.json").readText(Charsets.UTF_8)
+    val clienteMock = Gson().fromJson(jsonString, Cliente::class.java)
 
     @Test
     fun saveIsCorrect(){
-        Mockito.`when`(clienteRepository.save(Mockito.any(Cliente::class.java))).thenReturn(returnObject)
-        val response = clienteService.save(newObject)
-        Assertions.assertEquals(response.id, newObject.id)
-        Assertions.assertEquals(response.Nombre, newObject.Nombre)
+        Mockito.`when`(clienteRepository.save(Mockito.any(Cliente::class.java))).thenReturn(clienteMock)
+        val response = clienteService.save(clienteMock)
+        Assertions.assertEquals(response.id, clienteMock.id)
+        Assertions.assertEquals(response.Nombre, clienteMock.Nombre)
     }
 
     @Test
     fun updateIsCorrect(){
-        Mockito.`when`(clienteRepository.save(Mockito.any(Cliente::class.java))).thenReturn(returnObject)
-        val response = clienteService.update(newObject)
-        Assertions.assertEquals(response.id, newObject.id)
-        Assertions.assertEquals(response.Nombre, newObject.Nombre)
+        Mockito.`when`(clienteRepository.save(Mockito.any(Cliente::class.java))).thenReturn(clienteMock)
+        val response = clienteService.update(clienteMock)
+        Assertions.assertEquals(response.id, clienteMock.id)
+        Assertions.assertEquals(response.Nombre, clienteMock.Nombre)
     }
 
 }

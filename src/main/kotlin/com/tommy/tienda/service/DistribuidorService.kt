@@ -13,10 +13,18 @@ import org.springframework.web.server.ResponseStatusException
 @Service
 class DistribuidorService {
     @Autowired
-    lateinit var DistribuidorRepository: DistribuidorRepository
+    lateinit var distribuidorRepository: DistribuidorRepository
 
     fun list(): List<Distribuidor> {
-        return DistribuidorRepository.findAll()
+        return distribuidorRepository.findAll()
+    }
+
+    fun save (distribuidor: Distribuidor): Distribuidor {
+        //validacion cliente vacio
+        if (distribuidor.nombre.equals("")){
+
+        }
+        return distribuidorRepository.save(distribuidor)
     }
 
     fun update (distribuidor: Distribuidor): Distribuidor {
@@ -25,7 +33,7 @@ class DistribuidorService {
             if (distribuidor.nombre.equals("")) {
                 throw Exception()
             } else {
-                return DistribuidorRepository.save(distribuidor)
+                return distribuidorRepository.save(distribuidor)
             }
         }catch (ex: Exception) {
             throw ResponseStatusException(
@@ -34,16 +42,10 @@ class DistribuidorService {
     }
 
     fun delete (id:Long): Boolean {
-        DistribuidorRepository.deleteById(id)
+        distribuidorRepository.deleteById(id)
         return true
     }
 
-    fun save (distribuidor: Distribuidor): Distribuidor {
-        //validacion cliente vacio
-        if (distribuidor.nombre.equals("")){
 
-        }
-        return DistribuidorRepository.save(distribuidor)
-    }
 
    }

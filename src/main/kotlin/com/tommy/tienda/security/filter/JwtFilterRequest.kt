@@ -1,7 +1,7 @@
 package com.tommy.tienda.security.filter
 
 import com.tommy.tienda.security.JWTUtil
-import com.tommy.tienda.service.AppUsersService.AppUserDetailsService
+import com.tommy.tienda.service.AppUserDetailsService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.context.SecurityContextHolder
@@ -20,7 +20,7 @@ class JwtFilterRequest: OncePerRequestFilter() {
     lateinit var jwtUtil: JWTUtil
 
     @Autowired
-    lateinit var AppUserDetailsService: AppUserDetailsService
+    lateinit var appUserDetailsService: AppUserDetailsService
 
     override fun doFilterInternal(request: HttpServletRequest, response: HttpServletResponse, filterChain: FilterChain) {
         val authorizationHeader:String? = request.getHeader("Authorization")
@@ -29,7 +29,7 @@ class JwtFilterRequest: OncePerRequestFilter() {
                 val jwt: String = aut.substring(7)
                 val username: String = jwtUtil.extractUsername(jwt)
                 SecurityContextHolder.getContext().authentication ?: run {
-                    val userDetails: UserDetails = AppUserDetailsService.loadUserByUsername(username)
+                    val userDetails: UserDetails = appUserDetailsService.loadUserByUsername(username)
                     jwtUtil.validateToken(jwt, userDetails).let {
                         val authToken: UsernamePasswordAuthenticationToken = UsernamePasswordAuthenticationToken(userDetails, null, userDetails.authorities)
                         authToken.details = WebAuthenticationDetailsSource().buildDetails(request)
