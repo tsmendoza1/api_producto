@@ -21,7 +21,7 @@ class ClienteService {
     }
 
     fun update(cliente: Cliente): Cliente {
-        if (verifyDescription("libre")) {
+        if (verifyNombre()) {
             return clienteRepository.save(cliente)
         }
         return clienteRepository.save(cliente)
@@ -61,12 +61,9 @@ class ClienteService {
         return true
     }
 
-    fun verifyDescription(description: String?):Boolean{
-        fun verifyDescription(description: String?):Boolean{
-
-            for (i in 0..String().length){
-                val lista= listOf<String>("ocupado","libre")
-            }
+    fun verifyNombre():Boolean{
+        for (i in 0..String().length){
+            val lista= listOf<String>("Pedro","Pablo", "Juan")
             return true
         }
         return false

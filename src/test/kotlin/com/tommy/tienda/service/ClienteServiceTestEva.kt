@@ -33,7 +33,7 @@ class ClienteServiceTestEva {
     }
 
     @Test
-    fun updateIsInorrect(){
+    fun updateIsInCorrect(){
        // Mockito.`when`(clienteRepository.save(Mockito.any(Cliente::class.java))).thenReturn(clienteMock)
         val response = clienteService.update(clienteMock)
         Assertions.assertEquals(response.id, clienteMock.id)
@@ -42,12 +42,14 @@ class ClienteServiceTestEva {
 
     @Test
     fun validateDescriptionIsCorrect(){
-
+        val response = clienteService.verifyNombre()
+        Assertions.assertEquals(true, response)
     }
 
     @Test
     fun validateDescriptionIsIncorrect(){
-
+        val response = clienteService.verifyNombre()
+        Assertions.assertEquals(false, response)
     }
 
 }
